@@ -213,7 +213,7 @@ namespace Examiner.Domain.UnitTest
 		public void RemoveComponentFromComposite1()
 		{
 			var component = new Mock<ITaskComponent>().Object;
-			var sut = new TaskComposite(arbitraryName, components: new List<ITaskComponent>() { component });
+			var sut = new TaskComposite(arbitraryName, components: new List<ITaskComponent> { component });
 			
 			sut.Remove(component);
 
@@ -236,7 +236,7 @@ namespace Examiner.Domain.UnitTest
 		public void ContainsComponentInComposite1()
 		{
 			var component = new Mock<ITaskComponent>().Object;
-			var sut = new TaskComposite(arbitraryName, components: new List<ITaskComponent>() { component });
+			var sut = new TaskComposite(arbitraryName, components: new List<ITaskComponent> { component });
 			
 			Assert.True(sut.Contains(component));
 		}
@@ -256,7 +256,7 @@ namespace Examiner.Domain.UnitTest
 		public void ContainsComponentInComposite3()
 		{
 			var component = new Mock<ITaskComponent>().Object;
-			var sut = new TaskComposite(arbitraryName, components: new List<ITaskComponent>() { component });
+			var sut = new TaskComposite(arbitraryName, components: new List<ITaskComponent> { component });
 
 			sut.Remove(component);
 
