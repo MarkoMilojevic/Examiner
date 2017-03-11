@@ -6,9 +6,9 @@
 
 		public ValueTaskVisitor()
 		{
-			Value = 0;
+			Value = decimal.Zero;
 		}
-	
+
 		public void Visit(TaskElement element)
 		{
 			Value += element.Value;
