@@ -71,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskCompositeUnitTests.cs" />
     <Compile Include="TaskElementTests.cs" />
+    <Compile Include="ValueTaskVisitorUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
