@@ -55,20 +55,20 @@ namespace Examiner.Domain.UnitTest
 		}
 
 		[Fact]
-		public void DescriptionDefaultValueIsEmptyString()
-		{
-			var sut = new TaskElement(arbitraryName, arbitraryValue);
-
-			Assert.Equal(string.Empty, sut.Description);
-		}
-
-		[Fact]
 		public void DescriptionIsCorrect()
 		{
 			var expected = Guid.NewGuid().ToString();
 			var sut = new TaskElement(arbitraryName, expected, arbitraryValue);
 
 			Assert.Equal(expected, sut.Description);
+		}
+
+		[Fact]
+		public void DescriptionDefaultValueIsEmptyString()
+		{
+			var sut = new TaskElement(arbitraryName, arbitraryValue);
+
+			Assert.Equal(string.Empty, sut.Description);
 		}
 
 		[Fact]
