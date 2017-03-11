@@ -22,6 +22,14 @@ namespace Examiner.Domain.UnitTest
 		}
 
 		[Fact]
+		public void SutIsEnumerable()
+		{
+			var sut = new TaskComposite(arbitraryName);
+
+			Assert.IsAssignableFrom<IEnumerable<ITaskComponent>>(sut);
+		}
+
+		[Fact]
 		public void NameIsCorrect()
 		{
 			var expected = Guid.NewGuid().ToString();
@@ -267,6 +275,22 @@ namespace Examiner.Domain.UnitTest
 			sut.Remove(component);
 
 			Assert.False(sut.Contains(component));
+		}
+
+		[Fact]
+		public void EnumerationIsCorrect()
+		{
+			var components = new List<ITaskComponent> { new Mock<ITaskComponent>().Object, new Mock<ITaskComponent>().Object };
+			var sut = new TaskComposite(arbitraryName, arbitraryDescription, components);
+
+			int enumeratedCount = 0;
+			foreach (var component in components)
+			{
+				Assert.True(components.Contains(component));
+				enumeratedCount++;
+			}
+
+			Assert.True(enumeratedCount == components.Count);
 		}
 	}
 }
