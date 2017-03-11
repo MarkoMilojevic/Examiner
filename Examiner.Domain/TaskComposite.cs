@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Examiner.Domain
 {
@@ -29,10 +30,45 @@ namespace Examiner.Domain
 
 		public TaskComposite(string name, string description, List<ITaskComponent> components)
 		{
-			Name = name ?? throw new ArgumentNullException(nameof(name));
-			Description = description ?? throw new ArgumentNullException(nameof(description));
+			TaskComposite.ValidateInput(name, description, components);
 
-			_components = components ?? throw new ArgumentNullException(nameof(components));
+			Name = name;
+			Description = description;
+
+			_components = components;
+		}
+
+		private static void ValidateInput(string name, string description, List<ITaskComponent> components)
+		{
+			if (name == null)
+			{
+				throw new ArgumentNullException(nameof(name));
+			}
+
+			if (name == string.Empty)
+			{
+				throw new ArgumentException($"{nameof(name)} cannot be empty string.");
+			}
+
+			if (name.Contains(" "))
+			{
+				throw new ArgumentException($"{nameof(name)} cannot contain whitespace.");
+			}
+
+			if (description == null)
+			{
+				throw new ArgumentNullException(nameof(description));
+			}
+
+			if (components == null)
+			{
+				throw new ArgumentNullException(nameof(components));
+			}
+
+			if (components.Any(c => c == null))
+			{
+				throw new ArgumentException($"{nameof(TaskComposite)} cannot contain nulls.");
+			}
 		}
 
 		public void Accept(ITaskVisitor visitor)
