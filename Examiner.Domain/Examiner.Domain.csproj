@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="ITaskComponent.cs" />
     <Compile Include="ITaskVisitor.cs" />
+    <Compile Include="Note.cs" />
+    <Compile Include="NoteType.cs" />
+    <Compile Include="Penalty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Severity.cs" />
     <Compile Include="TaskComposite.cs" />
     <Compile Include="TaskElement.cs" />
     <Compile Include="ValueTaskVisitor.cs" />
